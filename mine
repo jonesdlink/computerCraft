@@ -1,0 +1,54 @@
+-- mine.lua
+
+-- Settings
+local finish = 82
+ 
+-- Variables
+local step = 1
+local torch = 1
+ 
+-- Begin Mining
+turtle.select(1)
+while turtle.detectDown() == true do
+    turtle.digDown()
+end
+while turtle.detectUp() == true do
+    turtle.digUp()
+end
+while turtle.detect() == true do
+    turtle.dig()
+end
+turtle.turnRight()
+while turtle.detect() == true do
+    turtle.dig()
+end
+turtle.turnLeft()
+repeat
+    turtle.forward()
+    while turtle.detectDown() == true do
+        turtle.digDown()
+    end
+    while turtle.detectUp() == true do
+        turtle.digUp()
+    end
+    while turtle.detect() == true do
+        turtle.dig()
+    end
+    turtle.turnLeft()
+    while turtle.detect() == true do
+        turtle.dig()
+    end
+    if torch == 9 then
+        turtle.place()
+        torch = 0
+    end
+    turtle.turnRight()
+    turtle.turnRight()
+    while turtle.detect() == true do
+        turtle.dig()
+    end
+    turtle.turnLeft()
+
+    step = step + 1
+    torch = torch + 1
+until step == finish
