@@ -1,7 +1,6 @@
 -- reset.lua
 
 -- Settings
--- test
 local move_finish = 82 -- This should match the setting in Mine
  
 -- Define Variables
