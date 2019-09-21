@@ -57,7 +57,7 @@ end
 selected_space = 1
 while found_torches == false do
     print(selected_space)
-    os.sleep(3)
+    os.sleep(1)
     print("Finding torches...")
     while selected_space ~= 17 do
         local data = turtle.getItemDetail(selected_space)
