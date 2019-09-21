@@ -14,7 +14,7 @@ local selected_space = 1
 local sufficient_fuel = false
 local sufficient_torches = false
 local torches_needed = math.floor(move_finish / torch_freq)
-local fuel_required = move_finish
+local fuel_required = move_finish - 1
 
 -- Set up the terminal
 term.clear()

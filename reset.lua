@@ -24,7 +24,6 @@ print("")
 -- Check that there is enough fuel
 while sufficient_fuel == false do
     print("Checking fuel level...")
-    print(fuel_reqired)
     if turtle.getFuelLevel() > fuel_reqired then
         print("Sufficient fuel loaded")
         sufficient_fuel = true
