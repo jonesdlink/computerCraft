@@ -61,17 +61,22 @@ repeat
     print("Finding torches...")
     repeat
         local data = turtle.getItemDetail(selected_space)
-        if data.name == torch_name then
-            print("Torches located")
-            turtle.select(selected_space)
-            found_torches = true
-            break
+        if data ~= nil then
+            if data.name == torch_name then
+                print("Torches located")
+                turtle.select(selected_space)
+                found_torches = true
+                break
+            elseif selected_space == 16 then
+                print("No torches located.  Please add toreches to inventory and execute program again.")
+                exit()
+            end
         elseif selected_space == 16 then
             print("No torches located.  Please add toreches to inventory and execute program again.")
-            exit()
+               exit()
         end
         selected_space = selected_space + 1
-    until selected_space == 16
+    until selected_space == 15
 until found_torches == true
 
 -- Check that there are enough torches
@@ -139,6 +144,6 @@ repeat
     end
     turtle.turnLeft()
 
-    step = step + 1
+    move_step = move_step + 1
     torch_step = torch_step + 1
 until step == finish
