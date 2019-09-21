@@ -3,8 +3,8 @@
 -- Settings
 local torch_freq = 9 -- How frequently should torches be placed?
 local move_finish = 82 -- How many blocks should the turtle go before stopping?  Hint: Make the finish divisible by torch_freq
-local coal_name = "Coal" -- What is the ID string for coal?
-local torch_name = "Torch" -- What is the ID string for torches?
+local coal_name = "minecraft:coal" -- What is the ID string for coal?
+local torch_name = "minecraft:torch" -- What is the ID string for torches?
 
 -- Define Variables
 local move_step = 1
@@ -15,6 +15,7 @@ local sufficient_fuel = false
 local found_torches = false
 local sufficient_torches = false
 local torches_needed = math.floor(move_finish / torch_freq)
+local data.name = "null"
 
 -- Set up the terminal
 term.clear()
