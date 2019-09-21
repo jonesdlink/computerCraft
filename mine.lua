@@ -35,7 +35,6 @@ repeat
     else
         print("Insufficient fuel loaded.  Checking for coal in inventory...")
         repeat
-            print(selected_space)
             local data = turtle.getItemDetail(selected_space)
             if data ~= nil then
                 if data.name == coal_name then
@@ -47,9 +46,12 @@ repeat
                     print("No coal located.  Please add coal to inventory and execute program again.")
                     exit()
                 end
+            elseif selected_space == 16 then
+                print("No coal located.  Please add coal to inventory and execute program again.")
+                exit()
             end
             selected_space = selected_space + 1
-        until selected_space == 16
+        until selected_space == 15
     end
 until sufficient_fuel == true
 
