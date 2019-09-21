@@ -98,7 +98,6 @@ end
 
 -- Begin Mining
 print("Mining...")
-turtle.select(1)
 while turtle.detectDown() == true do
     turtle.digDown()
 end
