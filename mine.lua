@@ -27,14 +27,14 @@ print("")
 
 -- Pre-Flight Checks
 -- Check that there is enough fuel
-repeat
+while sufficient_fuel == false do
     print("Checking fuel level...")
     if turtle.getFuelLevel() > move_finish then
         print("Sufficient fuel loaded")
         sufficient_fuel = true
     else
         print("Insufficient fuel loaded.  Checking for coal in inventory...")
-        repeat
+        while selected_space ~= 16 do
             local data = turtle.getItemDetail(selected_space)
             if data ~= nil then
                 if data.name == coal_name then
@@ -43,23 +43,21 @@ repeat
                     turtle.refuel()
                     break
                 elseif selected_space == 16 then
-                    print("No coal located.  Please add coal to inventory and execute program again.")
-                    exit()
+                    error("No coal located.  Please add coal to inventory and execute program again.")
                 end
             elseif selected_space == 16 then
-                print("No coal located.  Please add coal to inventory and execute program again.")
-                exit()
+                error("No coal located.  Please add coal to inventory and execute program again.")
             end
             selected_space = selected_space + 1
-        until selected_space == 15
+        end
     end
-until sufficient_fuel == true
+end
 
 -- Find the torches in the inventory
 selected_space = 1
-repeat
+while found_torches == false do
     print("Finding torches...")
-    repeat
+    while selected_space ~= 16 do
         local data = turtle.getItemDetail(selected_space)
         if data ~= nil then
             if data.name == torch_name then
@@ -68,26 +66,24 @@ repeat
                 found_torches = true
                 break
             elseif selected_space == 16 then
-                print("No torches located.  Please add toreches to inventory and execute program again.")
-                exit()
+                error("No torches located.  Please add toreches to inventory and execute program again.")
             end
         elseif selected_space == 16 then
-            print("No torches located.  Please add toreches to inventory and execute program again.")
-               exit()
+            error("No torches located.  Please add toreches to inventory and execute program again.")
         end
         selected_space = selected_space + 1
-    until selected_space == 15
-until found_torches == true
+    end
+end
 
 -- Check that there are enough torches
-repeat
+while sufficient_torches == false do
     print("Checking torch count...")
     if turtle.getItemCount() > torches_needed then
         print("Sufficient torches found")
         sufficient_torches = true
     else
         print("Insufficient torches found.  Checking for torches in another inventory slot...")
-        repeat
+        while selected_space != 16 do
             selected_space = selected_space + 1
             local data = turtle.getItemDetail(selected_space)
             if data.name == torch_name then
@@ -98,9 +94,9 @@ repeat
                 print("No torches located.  Please add toreches to inventory and execute program again.")
                 exit()
             end
-        until selected_space == 16
+        end
     end
-until sufficient_torches == true
+end
 
 -- Begin Mining
 turtle.select(1)
