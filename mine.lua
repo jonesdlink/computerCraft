@@ -15,7 +15,8 @@ local sufficient_fuel = false
 local found_torches = false
 local sufficient_torches = false
 local torches_needed = math.floor(move_finish / torch_freq)
-local data.name = "null"
+local data = {}
+data[name] = "null"
 
 -- Set up the terminal
 term.clear()
