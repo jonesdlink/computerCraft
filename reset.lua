@@ -1,8 +1,8 @@
 -- reset.lua
 
 -- Settings
--- test
 local move_finish = 82 -- This should match the setting in Mine
+local torch_name = "minecraft:torch" -- What is the ID string for torches?
  
 -- Define Variables
 local step2_finish = 6
@@ -60,11 +60,10 @@ while selected_space ~= 17 do
             found_torches = true
             break
         elseif selected_space == 16 then
-            print(selected_space)
-            error("No torches located.  Please add toreches to inventory and execute program again.")
+            error("No torches located.  Please add torches to inventory and execute program again.")
         end
     elseif selected_space == 16 then
-        error("No torches located.  Please add toreches to inventory and execute program again.")
+        error("No torches located.  Please add torches to inventory and execute program again.")
     end
     selected_space = selected_space + 1
 end
