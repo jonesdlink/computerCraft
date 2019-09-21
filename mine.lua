@@ -15,8 +15,6 @@ local sufficient_fuel = false
 local found_torches = false
 local sufficient_torches = false
 local torches_needed = math.floor(move_finish / torch_freq)
-local data = {}
-data[name] = "null"
 
 -- Set up the terminal
 term.clear()
@@ -38,14 +36,16 @@ repeat
         print("Insufficient fuel loaded.  Checking for coal in inventory...")
         repeat
             local data = turtle.getItemDetail(selected_space)
-            if data.name == coal_name then
-                print("Coal located.  Refueling...")
-                turtle.select(selected_space)
-                turtle.refuel()
-                break
-            elseif selected_space == 16 then
-                print("No coal located.  Please add coal to inventory and execute program again.")
-                exit()
+            if data.name ~= nil then
+                if data.name == coal_name then
+                    print("Coal located.  Refueling...")
+                    turtle.select(selected_space)
+                    turtle.refuel()
+                    break
+                elseif selected_space == 16 then
+                    print("No coal located.  Please add coal to inventory and execute program again.")
+                    exit()
+                end
             end
             selected_space = selected_space + 1
         until selected_space == 16
