@@ -2,6 +2,7 @@
 
 -- Settings
 local move_finish = 82 -- This should match the setting in Mine
+local coal_name = "minecraft:coal" -- What is the ID string for coal?
 local torch_name = "minecraft:torch" -- What is the ID string for torches?
  
 -- Define Variables
