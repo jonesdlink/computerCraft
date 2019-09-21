@@ -12,7 +12,6 @@ local torch_step = 1
 local torch_count = 1
 local selected_space = 1
 local sufficient_fuel = false
-local found_torches = false
 local sufficient_torches = false
 local torches_needed = math.floor(move_finish / torch_freq)
 
@@ -55,28 +54,23 @@ end
 
 -- Find the torches in the inventory
 selected_space = 1
-while found_torches == false do
-    print(selected_space)
-    os.sleep(1)
-    print("Finding torches...")
-    while selected_space ~= 17 do
-        local data = turtle.getItemDetail(selected_space)
-        if data ~= nil then
-            if data.name == torch_name then
-                print("Torches located")
-                turtle.select(selected_space)
-                found_torches = true
-                break
-            elseif selected_space == 16 then
-                print(selected_space)
-                error("No torches located.  Please add toreches to inventory and execute program again.")
-            end
+print("Finding torches...")
+while selected_space ~= 17 do
+    local data = turtle.getItemDetail(selected_space)
+    if data ~= nil then
+        if data.name == torch_name then
+            print("Torches located")
+            turtle.select(selected_space)
+            found_torches = true
+            break
         elseif selected_space == 16 then
             print(selected_space)
             error("No torches located.  Please add toreches to inventory and execute program again.")
         end
-        selected_space = selected_space + 1
+    elseif selected_space == 16 then
+        error("No torches located.  Please add toreches to inventory and execute program again.")
     end
+    selected_space = selected_space + 1
 end
 
 -- Check that there are enough torches
@@ -103,6 +97,7 @@ while sufficient_torches == false do
 end
 
 -- Begin Mining
+print("Mining...")
 turtle.select(1)
 while turtle.detectDown() == true do
     turtle.digDown()
@@ -146,4 +141,4 @@ repeat
 
     move_step = move_step + 1
     torch_step = torch_step + 1
-until step == finish
+until move_step == move_finish
