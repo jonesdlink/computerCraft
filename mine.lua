@@ -34,7 +34,7 @@ while sufficient_fuel == false do
         sufficient_fuel = true
     else
         print("Insufficient fuel loaded.  Checking for coal in inventory...")
-        while selected_space ~= 16 do
+        while selected_space ~= 17 do
             local data = turtle.getItemDetail(selected_space)
             if data ~= nil then
                 if data.name == coal_name then
@@ -83,7 +83,7 @@ while sufficient_torches == false do
         sufficient_torches = true
     else
         print("Insufficient torches found.  Checking for torches in another inventory slot...")
-        while selected_space != 16 do
+        while selected_space ~= 16 do
             selected_space = selected_space + 1
             local data = turtle.getItemDetail(selected_space)
             if data.name == torch_name then
