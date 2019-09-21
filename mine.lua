@@ -56,6 +56,8 @@ end
 -- Find the torches in the inventory
 selected_space = 1
 while found_torches == false do
+    print(selected_space)
+    os.sleep(3)
     print("Finding torches...")
     while selected_space ~= 17 do
         local data = turtle.getItemDetail(selected_space)
