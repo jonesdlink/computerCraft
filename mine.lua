@@ -14,6 +14,7 @@ local selected_space = 1
 local sufficient_fuel = false
 local sufficient_torches = false
 local torches_needed = math.floor(move_finish / torch_freq)
+local fuel_required = move_finish
 
 -- Set up the terminal
 term.clear()
@@ -28,7 +29,7 @@ print("")
 -- Check that there is enough fuel
 while sufficient_fuel == false do
     print("Checking fuel level...")
-    if turtle.getFuelLevel() > move_finish then
+    if turtle.getFuelLevel() > fuel_required then
         print("Sufficient fuel loaded")
         sufficient_fuel = true
     else
